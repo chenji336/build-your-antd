@@ -22,7 +22,11 @@ interface BaseButtonProps {
   disabled?: boolean,
 }
 
-const Button: React.FC<BaseButtonProps> = (props) => {
+type NativeButtonProps = React.ButtonHTMLAttributes<HTMLElement> & BaseButtonProps
+type AnchorButonProps = React.AnchorHTMLAttributes<HTMLElement> & BaseButtonProps
+export type ButtonProps = Partial<NativeButtonProps & AnchorButonProps> // button 和 a 不一定有各自的属性，所以做为可选
+
+const Button: React.FC<ButtonProps> = (props) => {
   const {
     size,
     btnType,
@@ -30,6 +34,7 @@ const Button: React.FC<BaseButtonProps> = (props) => {
     href,
     disabled,
     className,
+    ...restProps
   } = props
 
   const classes = classnames('btn', className, {
@@ -42,8 +47,8 @@ const Button: React.FC<BaseButtonProps> = (props) => {
     <>
       {
         btnType === ButtonType.Link && href ?
-          <a className={classes} href={href}> {children} </a> :
-          <button className={classes} disabled={disabled}> {children} </button>
+          <a className={classes} href={href} {...restProps}> {children} </a> :
+          <button className={classes} disabled={disabled} {...restProps}> {children} </button>
       }
     </>
   )
