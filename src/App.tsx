@@ -15,7 +15,7 @@ function App() {
         <Button btnType={ButtonType.Link} href="https://www.baidu.com" target="_blank"> Button Link </Button>
         <Button btnType={ButtonType.Link} href="https://www.baidu.com" disabled> Disabled Link </Button>
 
-        <Menu onSelect={(index) => alert(index)}>
+        <Menu onSelect={(index) => alert(index)} mode={'horizontal'}>
           <MenuItem index={0}>
             item1
           </MenuItem>
