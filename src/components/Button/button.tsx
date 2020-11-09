@@ -4,7 +4,7 @@ import classnames from 'classnames'
 export enum ButtonType {
   Primary = 'primary',
   Danger = 'danger',
-  Default = 'defaul',
+  Default = 'default',
   Link = 'link',
 }
 
@@ -52,6 +52,11 @@ const Button: React.FC<ButtonProps> = (props) => {
       }
     </>
   )
+}
+
+Button.defaultProps = {
+  disabled: false,
+  btnType: ButtonType.Default,
 }
 
 export default Button
