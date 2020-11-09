@@ -15,14 +15,14 @@ function App() {
         <Button btnType={ButtonType.Link} href="https://www.baidu.com" target="_blank"> Button Link </Button>
         <Button btnType={ButtonType.Link} href="https://www.baidu.com" disabled> Disabled Link </Button>
 
-        <Menu >
-          <MenuItem>
+        <Menu onSelect={(index) => alert(index)}>
+          <MenuItem index={0}>
             item1
           </MenuItem>
-          <MenuItem>
+          <MenuItem index={1} disabled>
             item2
           </MenuItem>
-          <MenuItem>
+          <MenuItem index={2}>
             item3
           </MenuItem>
         </Menu>
