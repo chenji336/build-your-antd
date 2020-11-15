@@ -16,13 +16,13 @@ function App() {
         <Button btnType={ButtonType.Link} href="https://www.baidu.com" disabled> Disabled Link </Button>
 
         <Menu onSelect={(index) => alert(index)} mode={'horizontal'}>
-          <MenuItem index={0}>
+          <MenuItem>
             item1
           </MenuItem>
-          <MenuItem index={1} disabled>
+          <MenuItem disabled>
             item2
           </MenuItem>
-          <MenuItem index={2}>
+          <MenuItem>
             item3
           </MenuItem>
         </Menu>

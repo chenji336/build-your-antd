@@ -25,9 +25,11 @@ const testVerProps: MenuProps = {
 function generateMenu(props: MenuProps) {
   return (
     <Menu {...props}>
-      <MenuItem index={0}>active</MenuItem>
-      <MenuItem index={1} disabled>disabled</MenuItem>
-      <MenuItem index={2}>third</MenuItem>
+      <MenuItem>active</MenuItem>
+      <MenuItem disabled>disabled</MenuItem>
+      <MenuItem>third</MenuItem>
+      {/* 放开会提示错误，因为已经做了判断 */}
+      {/* <li>chenji</li> */}
     </Menu>
   )
 }

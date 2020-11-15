@@ -2,8 +2,8 @@ import React, { useContext } from 'react'
 import classNames from 'classnames'
 import { MenuContext } from './menu'
 
-interface MenuItemProps {
-  index: number
+export interface MenuItemProps {
+  index?: number
   disabled?: boolean
   className?: string
   style?: React.CSSProperties
@@ -16,12 +16,14 @@ const MenuItem: React.FC<MenuItemProps> = (props) => {
     'is-disabled': disabled,
     'is-active': index === context.index,
   })
-  const handleClick = (index: number) => {
-    context.onSelect && !disabled && context.onSelect(index)
+  const handleClick = () => {
+    if ( context.onSelect && !disabled && typeof index === 'number') {
+      context.onSelect(index)
+    }
   }
 
   return (
-    <li className={classes} style={style} onClick={() => handleClick(index)}>
+    <li className={classes} style={style} onClick={handleClick}>
       {children}
     </li>
   )
@@ -31,5 +33,7 @@ MenuItem.defaultProps = {
   index: 0,
   disabled: false,
 }
+
+MenuItem.displayName = "MenuItem"
 
 export default MenuItem
