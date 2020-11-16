@@ -2,6 +2,7 @@ import React from 'react';
 import Button, { ButtonType, ButtonSize } from './components/Button/button'
 import Menu from './components/Menu/menu'
 import MenuItem from './components/Menu/menuItem'
+import SubMenu from './components/Menu/subMenu';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         <Button btnType={ButtonType.Link} href="https://www.baidu.com" target="_blank"> Button Link </Button>
         <Button btnType={ButtonType.Link} href="https://www.baidu.com" disabled> Disabled Link </Button>
 
-        <Menu onSelect={(index) => alert(index)} mode={'horizontal'}>
+        <Menu onSelect={(index) => alert(index)} mode='vertical'>
           <MenuItem>
             item1
           </MenuItem>
@@ -25,6 +26,14 @@ function App() {
           <MenuItem>
             item3
           </MenuItem>
+          <SubMenu title="dropdown">
+            <MenuItem>
+              dropdown1
+            </MenuItem>
+            <MenuItem>
+              dropdown2
+            </MenuItem>
+          </SubMenu>
         </Menu>
 
         <p>
