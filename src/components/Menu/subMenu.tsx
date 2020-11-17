@@ -5,16 +5,18 @@ import { MenuContext } from './menu'
 
 interface SubMenuProps {
   title: string
-  index?: number
+  index?: string
   className?: string
 }
 
 const SubMenu: React.FC<SubMenuProps> = ({title, index, className, children}) => {
   const menuContext = useContext(MenuContext)
+  const openSubMenus = menuContext.defaultOpenSubMenus as Array<string>
+  const isOpened = index && menuContext.mode === 'vertical' && openSubMenus.includes(index)
   const classes = classnames('menu-item submenu-item', className, {
     'is-active': menuContext.index === index
   })
-  const [menuOpen, setOpen] = useState(false)
+  const [menuOpen, setOpen] = useState(isOpened)
 
   // vertical 状态下是点击
   const handleClick = (e: React.MouseEvent) => {
