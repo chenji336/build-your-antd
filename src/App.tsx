@@ -3,12 +3,16 @@ import Button, { ButtonType, ButtonSize } from './components/Button/button'
 import Menu from './components/Menu/menu'
 import MenuItem from './components/Menu/menuItem'
 import SubMenu from './components/Menu/subMenu';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import logo from './logo.svg'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-
+        <FontAwesomeIcon icon={faCoffee}></FontAwesomeIcon>
+        <img src={logo} alt="" width="30"/>
         <Button onClick={(e) => {e.preventDefault();alert(1)}}> Hello </Button>
         <Button disabled> disabled Button </Button>
         <Button btnType={ButtonType.Primary} size={ButtonSize.Large}> Primary Large</Button>
