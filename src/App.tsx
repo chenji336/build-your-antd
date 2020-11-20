@@ -7,6 +7,7 @@ import logo from './logo.svg'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { fas } from '@fortawesome/free-solid-svg-icons'
+import Icon from './components/Icon/icon';
 
 library.add(fas) // 这样就不需要一个一个引入了（fas 是 IconPack)
 
@@ -15,6 +16,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <FontAwesomeIcon icon="ad"></FontAwesomeIcon>
+        <Icon icon="ad" theme="primary"></Icon>
         <img src={logo} alt="" width="30"/>
         <Button onClick={(e) => {e.preventDefault();alert(1)}}> Hello </Button>
         <Button disabled> disabled Button </Button>
