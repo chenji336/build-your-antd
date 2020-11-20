@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import classnames from 'classnames'
 import { MenuItemProps } from './menuItem'
 import { MenuContext } from './menu'
+import Icon from '../Icon/icon'
 
 interface SubMenuProps {
   title: string
@@ -13,10 +14,12 @@ const SubMenu: React.FC<SubMenuProps> = ({title, index, className, children}) =>
   const menuContext = useContext(MenuContext)
   const openSubMenus = menuContext.defaultOpenSubMenus as Array<string>
   const isOpened = index && menuContext.mode === 'vertical' && openSubMenus.includes(index)
-  const classes = classnames('menu-item submenu-item', className, {
-    'is-active': menuContext.index === index
-  })
   const [menuOpen, setOpen] = useState(isOpened)
+  const classes = classnames('menu-item submenu-item', className, {
+    'is-active': menuContext.index === index,
+    'is-opened': menuOpen,
+    'is-vertical': menuContext.mode === 'vertical',
+  })
 
   // vertical 状态下是点击
   const handleClick = (e: React.MouseEvent) => {
@@ -44,7 +47,7 @@ const SubMenu: React.FC<SubMenuProps> = ({title, index, className, children}) =>
 
   const renderChildren = () => {
     const subMenuClasses = classnames('submenu', {
-      'menu-opened': menuOpen
+      'menu-opened': menuOpen,
     })
     const childrenComponent = React.Children.map(children, (child, i) => {
       const childComponent = child as React.FunctionComponentElement<MenuItemProps>
@@ -66,7 +69,10 @@ const SubMenu: React.FC<SubMenuProps> = ({title, index, className, children}) =>
 
   return (
     <li key={index} className={classes} {...mouseEvents}>
-      <div className="submenu-title" {...clickEvents}>{title}</div>
+      <div className="submenu-title" {...clickEvents}>
+        {title}
+        <Icon icon="angle-down" className="arrow-icon"></Icon>
+      </div>
       {renderChildren()}
     </li>
   )
