@@ -65,7 +65,10 @@
 
 
 .submenu {
-  display: none;
+  // 如果只通过 css 实现 opacity 的0到1，那么在最初时刻，opacity 还占据的空间
+  opacity: 0;
+  transition: opacity .5s ease-in;
+  // display: none;
   list-style: none;
   padding-left: 0;
   white-space: nowrap;
@@ -84,6 +87,7 @@
 
   &.menu-opened {
     display: block;
+    opacity: 1;
   }
 }
 
