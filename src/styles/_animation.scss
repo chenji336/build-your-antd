@@ -1,0 +1,15 @@
+.zoom-in-top-enter {
+  opacity: 0;
+}
+.zoom-in-top-enter-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+
+.zoom-in-top-exit {
+  opacity: 1;
+}
+.zoom-in-top-exit-active {
+  opacity: 0;
+  transition: opacity .5s ease-in;
+}

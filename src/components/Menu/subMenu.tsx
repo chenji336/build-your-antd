@@ -1,5 +1,6 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import classnames from 'classnames'
+import { CSSTransition } from 'react-transition-group'
 import { MenuItemProps } from './menuItem'
 import { MenuContext } from './menu'
 import Icon from '../Icon/icon'
@@ -44,6 +45,9 @@ const SubMenu: React.FC<SubMenuProps> = ({title, index, className, children}) =>
     onMouseEnter: (e: React.MouseEvent) => handleMouse(e, true),
     onMouseLeave: (e: React.MouseEvent) => handleMouse(e, false),
   } : {}
+  // fix: https://github.com/reactjs/react-transition-group/issues/668
+  // https://github.com/reactjs/react-transition-group/blob/1fd4a65ac45edd2aea3dec18eeb8b9c07c7eb93f/CHANGELOG.md#features
+  const nodeRef = useRef(null)
 
   const renderChildren = () => {
     const subMenuClasses = classnames('submenu', {
@@ -61,9 +65,24 @@ const SubMenu: React.FC<SubMenuProps> = ({title, index, className, children}) =>
       }
     })
     return (
-      <ul className={ subMenuClasses }>
-       {childrenComponent}
-      </ul>
+      <CSSTransition
+        nodeRef={nodeRef}
+        in={menuOpen as boolean} 
+        classNames="zoom-in-top"
+        timeout={500}
+        // addEndListener={(done: any) => {
+        //   // use the css transitionend event to mark the finish of a transition
+        //   // explicit（严格模式）：只有一个参数 done
+        //   // implicit（含蓄模式）：两个参数 node, done(官网的例子是 implicit 模式)
+        //   console.log('node:', nodeRef.current); // 获取到 dom
+        //   (nodeRef.current as any).addEventListener('transitionend', done, false);
+        // }}
+        appear
+      >
+        <ul ref={nodeRef} className={ subMenuClasses }>
+          {childrenComponent}
+        </ul>
+      </CSSTransition>
     )
   }
 

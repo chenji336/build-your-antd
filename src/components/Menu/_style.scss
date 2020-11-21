@@ -65,10 +65,14 @@
 
 
 .submenu {
+
   // 如果只通过 css 实现 opacity 的0到1，那么在最初时刻，opacity 还占据的空间
-  opacity: 0;
-  transition: opacity .5s ease-in;
-  // display: none;
+  // 通过 react-transition-group 代替，代码在 animation 中
+  // opacity: 0;
+  // transition: opacity .5s ease-in;
+  display: none;
+
+
   list-style: none;
   padding-left: 0;
   white-space: nowrap;
@@ -85,9 +89,10 @@
     }
   }
 
+  // 通过 react-transition-group 代替，代码在 animation 中
   &.menu-opened {
     display: block;
-    opacity: 1;
+    // opacity: 1;
   }
 }
 
