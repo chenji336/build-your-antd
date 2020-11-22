@@ -1,9 +1,12 @@
-.zoom-in-top-enter {
+.zoom-in-top-enter, .zoom-in-top-appear {
   opacity: 0;
+  transform: scaleY(0);
 }
-.zoom-in-top-enter-active {
+.zoom-in-top-enter-active, .zoom-in-top-appear-active {
   opacity: 1;
-  transition: opacity .5s ease-in;
+  transform: scaleY(1);
+  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+  transform-origin: center top;
 }
 
 .zoom-in-top-exit {
@@ -11,5 +14,7 @@
 }
 .zoom-in-top-exit-active {
   opacity: 0;
-  transition: opacity .5s ease-in;
+  transform: scaleY(0);
+  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+  transform-origin: center top;
 }

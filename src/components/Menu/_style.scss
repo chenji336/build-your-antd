@@ -70,7 +70,7 @@
   // 通过 react-transition-group 代替，代码在 animation 中
   // opacity: 0;
   // transition: opacity .5s ease-in;
-  display: none;
+  // display: none;
 
 
   list-style: none;
@@ -91,7 +91,7 @@
 
   // 通过 react-transition-group 代替，代码在 animation 中
   &.menu-opened {
-    display: block;
+    // display: block;
     // opacity: 1;
   }
 }

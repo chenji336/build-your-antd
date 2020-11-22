@@ -69,7 +69,7 @@ const SubMenu: React.FC<SubMenuProps> = ({title, index, className, children}) =>
         nodeRef={nodeRef}
         in={menuOpen as boolean} 
         classNames="zoom-in-top"
-        timeout={500}
+        timeout={300}
         // addEndListener={(done: any) => {
         //   // use the css transitionend event to mark the finish of a transition
         //   // explicit（严格模式）：只有一个参数 done
@@ -77,7 +77,8 @@ const SubMenu: React.FC<SubMenuProps> = ({title, index, className, children}) =>
         //   console.log('node:', nodeRef.current); // 获取到 dom
         //   (nodeRef.current as any).addEventListener('transitionend', done, false);
         // }}
-        appear
+        appear // 也需要添加响应的 x-appear 属性才能奏效
+        unmountOnExit // 类似 ngIf
       >
         <ul ref={nodeRef} className={ subMenuClasses }>
           {childrenComponent}
