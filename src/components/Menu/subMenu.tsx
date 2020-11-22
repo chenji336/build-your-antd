@@ -1,9 +1,9 @@
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import classnames from 'classnames'
-import { CSSTransition } from 'react-transition-group'
 import { MenuItemProps } from './menuItem'
 import { MenuContext } from './menu'
 import Icon from '../Icon/icon'
+import Transition from '../Transition/transition'
 
 interface SubMenuProps {
   title: string
@@ -45,9 +45,6 @@ const SubMenu: React.FC<SubMenuProps> = ({title, index, className, children}) =>
     onMouseEnter: (e: React.MouseEvent) => handleMouse(e, true),
     onMouseLeave: (e: React.MouseEvent) => handleMouse(e, false),
   } : {}
-  // fix: https://github.com/reactjs/react-transition-group/issues/668
-  // https://github.com/reactjs/react-transition-group/blob/1fd4a65ac45edd2aea3dec18eeb8b9c07c7eb93f/CHANGELOG.md#features
-  const nodeRef = useRef(null)
 
   const renderChildren = () => {
     const subMenuClasses = classnames('submenu', {
@@ -65,10 +62,9 @@ const SubMenu: React.FC<SubMenuProps> = ({title, index, className, children}) =>
       }
     })
     return (
-      <CSSTransition
-        nodeRef={nodeRef}
+      <Transition
         in={menuOpen as boolean} 
-        classNames="zoom-in-top"
+        animation="zoom-in-top"
         timeout={300}
         // addEndListener={(done: any) => {
         //   // use the css transitionend event to mark the finish of a transition
@@ -77,13 +73,11 @@ const SubMenu: React.FC<SubMenuProps> = ({title, index, className, children}) =>
         //   console.log('node:', nodeRef.current); // 获取到 dom
         //   (nodeRef.current as any).addEventListener('transitionend', done, false);
         // }}
-        appear // 也需要添加响应的 x-appear 属性才能奏效
-        unmountOnExit // 类似 ngIf
       >
-        <ul ref={nodeRef} className={ subMenuClasses }>
+        <ul className={ subMenuClasses }>
           {childrenComponent}
         </ul>
-      </CSSTransition>
+      </Transition>
     )
   }
 
