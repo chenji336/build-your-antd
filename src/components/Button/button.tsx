@@ -1,12 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export enum ButtonType {
-  Primary = 'primary',
-  Danger = 'danger',
-  Default = 'default',
-  Link = 'link',
-}
+export type ButtonType = 'primary' | 'danger' | 'default' | 'link'
 
 export enum ButtonSize {
   Large = 'lg',
@@ -40,13 +35,13 @@ const Button: React.FC<ButtonProps> = (props) => {
   const classes = classnames('btn', className, {
     [`btn-${btnType}`]: btnType,
     [`btn-${size}`]: size,
-    disabled: disabled && btnType === ButtonType.Link
+    disabled: disabled && btnType === 'link'
   })
 
   return (
     <>
       {
-        btnType === ButtonType.Link && href ?
+        btnType === 'link' && href ?
           <a className={classes} href={href} {...restProps}> {children} </a> :
           <button className={classes} disabled={disabled} {...restProps}> {children} </button>
       }
@@ -56,7 +51,7 @@ const Button: React.FC<ButtonProps> = (props) => {
 
 Button.defaultProps = {
   disabled: false,
-  btnType: ButtonType.Default,
+  btnType: 'default',
 }
 
 export default Button
