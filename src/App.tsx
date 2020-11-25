@@ -22,10 +22,10 @@ function App() {
         <img src={logo} alt="" width="30"/>
         <Button onClick={(e) => {e.preventDefault();alert(1)}}> Hello </Button>
         <Button disabled> disabled Button </Button>
-        <Button btnType={ButtonType.Primary} size={ButtonSize.Large}> Primary Large</Button>
-        <Button btnType={ButtonType.Primary} size={ButtonSize.Small}> Primary Small</Button>
-        <Button btnType={ButtonType.Link} href="https://www.baidu.com" target="_blank"> Button Link </Button>
-        <Button btnType={ButtonType.Link} href="https://www.baidu.com" disabled> Disabled Link </Button>
+        <Button btnType="primary" size={ButtonSize.Large}> Primary Large</Button>
+        <Button btnType="primary" size={ButtonSize.Small}> Primary Small</Button>
+        <Button btnType="link" href="https://www.baidu.com" target="_blank"> Button Link </Button>
+        <Button btnType="link" href="https://www.baidu.com" disabled> Disabled Link </Button>
 
         <Menu onSelect={(index) => alert(index)} mode="horizontal" defaultOpenSubMenus={["3"]}>
           <MenuItem>
@@ -68,7 +68,7 @@ function App() {
           添加 wrapper 属性可以解决这个问题
         */}
         <Transition in={show} timeout={300} animation="zoom-in-left" wrapper>
-          <Button btnType={ButtonType.Primary}>primary Button</Button>
+          <Button btnType="primary">primary Button</Button>
         </Transition>
       </header>
     </div>

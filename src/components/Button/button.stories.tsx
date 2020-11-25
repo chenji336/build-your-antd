@@ -1,21 +1,23 @@
 import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
+import { action } from "@storybook/addon-actions"
 
-import  Button, { ButtonProps } from './button';
+import  Button, { ButtonProps, ButtonSize } from './button';
 
 export default {
   title: 'Component/Button', // title 和 目录（这里包含两层目录）
   component: Button,
 } as Meta;
 
-const Template: Story<ButtonProps> = (args) => <Button {...args}>test</Button>;
+const Template: Story<ButtonProps> = (args) => <Button onClick={action('click')} {...args}>test</Button>;
 
-export const Type = Template.bind({});
-Type.args = {
-  btnType: 'primary'
+export const ButtonWithType = Template.bind({});
+ButtonWithType.args = {
+  btnType: 'primary',
+  href: 'https://www.baidu.com'
 };
-Type.argTypes = {
+ButtonWithType.argTypes = {
   btnType: {
     control: {
       type: 'inline-radio',
@@ -24,16 +26,23 @@ Type.argTypes = {
   }
 }
 
-export const Disable = Template.bind({});
-Disable.args = {
+export const ButtonWithDisable = Template.bind({});
+ButtonWithDisable.args = {
   disabled: false
 };
 
-// export const Large = Template.bind({});
-// Large.args = {
-//   size: 'large',
-//   label: 'Button',
-// };
+export const ButtonWithSize = Template.bind({});
+ButtonWithSize.args = {
+  size: ButtonSize.Large
+};
+ButtonWithSize.argTypes = {
+  size: {
+    control: {
+      type: 'inline-radio',
+      options: [ButtonSize.Small, ButtonSize.Large]
+    }
+  }
+}
 
 // export const Small = Template.bind({});
 // Small.args = {
