@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Button, { ButtonType, ButtonSize } from './components/Button/button'
+import Button from './components/Button/button'
 import Menu from './components/Menu/menu'
 import MenuItem from './components/Menu/menuItem'
 import SubMenu from './components/Menu/subMenu';
@@ -22,8 +22,8 @@ function App() {
         <img src={logo} alt="" width="30"/>
         <Button onClick={(e) => {e.preventDefault();alert(1)}}> Hello </Button>
         <Button disabled> disabled Button </Button>
-        <Button btnType="primary" size={ButtonSize.Large}> Primary Large</Button>
-        <Button btnType="primary" size={ButtonSize.Small}> Primary Small</Button>
+        <Button btnType="primary" size="lg"> Primary Large</Button>
+        <Button btnType="primary" size="sm"> Primary Small</Button>
         <Button btnType="link" href="https://www.baidu.com" target="_blank"> Button Link </Button>
         <Button btnType="link" href="https://www.baidu.com" disabled> Disabled Link </Button>
 
@@ -47,7 +47,7 @@ function App() {
           </SubMenu>
         </Menu>
 
-        <Button size={ButtonSize.Large} onClick={() => setShow(!show)}>toggle</Button>
+        <Button size="lg" onClick={() => setShow(!show)}>toggle</Button>
         <Transition in={show} timeout={300} animation="zoom-in-left">
          <div>
           <p>

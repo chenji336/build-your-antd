@@ -1,27 +1,38 @@
-import React from 'react'
+import React, { AnchorHTMLAttributes, ButtonHTMLAttributes, FC, ReactNode }  from 'react'
 import classnames from 'classnames'
 
 export type ButtonType = 'primary' | 'danger' | 'default' | 'link'
 
-export enum ButtonSize {
-  Large = 'lg',
-  Small = 'sm',
-}
+export type ButtonSize = 'lg' | 'sm'
 
 interface BaseButtonProps {
   size?: ButtonSize,
-  btnType?: ButtonType, // 不叫做 type，是因为 type 是 button 默认属性
-  children: React.ReactNode,
+  /**
+   * 不叫做 type，是因为 type 是 button 默认属性
+   */
+  btnType?: ButtonType,
+  children: ReactNode,
   className?: string,
   href?: string,
   disabled?: boolean,
 }
 
-type NativeButtonProps = React.ButtonHTMLAttributes<HTMLElement> & BaseButtonProps
-type AnchorButonProps = React.AnchorHTMLAttributes<HTMLElement> & BaseButtonProps
+type NativeButtonProps = ButtonHTMLAttributes<HTMLElement> & BaseButtonProps
+type AnchorButonProps = AnchorHTMLAttributes<HTMLElement> & BaseButtonProps
 export type ButtonProps = Partial<NativeButtonProps & AnchorButonProps> // button 和 a 不一定有各自的属性，所以做为可选
 
-const Button: React.FC<ButtonProps> = (props) => {
+// react-docgen-typescript-loader Limitations: https://github.com/strothj/react-docgen-typescript-loader#limitations
+// 即使 export default Buttton，也需要 export const Button
+
+/**
+ * # 这是我们第一个 Button 组件
+ * 可以这里写 md 格式
+ * 
+ * ```js
+ * console('文档测试')
+ * ```
+ */
+export const Button: FC<ButtonProps> = (props) => {
   const {
     size,
     btnType,

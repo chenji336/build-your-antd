@@ -3,7 +3,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { action } from "@storybook/addon-actions"
 
-import  Button, { ButtonProps, ButtonSize } from './button';
+import  Button, { ButtonProps } from './button';
 
 export default {
   title: 'Component/Button', // title 和 目录（这里包含两层目录）
@@ -17,14 +17,15 @@ ButtonWithType.args = {
   btnType: 'primary',
   href: 'https://www.baidu.com'
 };
-ButtonWithType.argTypes = {
-  btnType: {
-    control: {
-      type: 'inline-radio',
-      options: ['primary', 'danger' , 'default' , 'link']
-    }
-  }
-}
+// 修改 button.tsx 之后会自动推断生成 argTypes
+// ButtonWithType.argTypes = {
+//   btnType: {
+//     control: {
+//       type: 'inline-radio',
+//       options: ['primary', 'danger' , 'default' , 'link']
+//     }
+//   }
+// }
 
 export const ButtonWithDisable = Template.bind({});
 ButtonWithDisable.args = {
@@ -33,26 +34,14 @@ ButtonWithDisable.args = {
 
 export const ButtonWithSize = Template.bind({});
 ButtonWithSize.args = {
-  size: ButtonSize.Large
+  size: "lg"
 };
-ButtonWithSize.argTypes = {
-  size: {
-    control: {
-      type: 'inline-radio',
-      options: [ButtonSize.Small, ButtonSize.Large]
-    }
-  }
-}
+// ButtonWithSize.argTypes = {
+//   size: {
+//     control: {
+//       type: 'inline-radio',
+//       options: [ButtonSize.Small, ButtonSize.Large]
+//     }
+//   }
+// }
 
-// export const Small = Template.bind({});
-// Small.args = {
-//   size: 'small',
-//   label: 'Button',
-// };
-
-// export const Click = Template.bind({});
-// Click.args = {
-//   size: 'small',
-//   label: 'Button',
-//   onClick() { console.log('button click') }
-// };
