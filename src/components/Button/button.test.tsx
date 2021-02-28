@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
-import Button, { ButtonSize, ButtonProps } from './button'
+import Button, { ButtonProps } from './button'
 
 const defaultProps: ButtonProps = {
   onClick: jest.fn()
@@ -8,7 +8,7 @@ const defaultProps: ButtonProps = {
 
 const testProps: ButtonProps = {
   btnType: 'primary',
-  size: ButtonSize.Small,
+  size: 'sm',
   className: 'test-class'
 }
 
